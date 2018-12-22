@@ -39,12 +39,17 @@ func GetPerson(w http.ResponseWriter, r *http.Request) {
 //Create Person
 //
 func CreatePerson(w http.ResponseWriter, r *http.Request) {
-
+	params := mux.Vars(r)
+	var person Person
+	_ = json.NewEncoder(r.body).Decode(&person)
+	person.ID = params["id"]
+	people = append(people, person)
+	json.NewEncoder(w).Encode(people)
 }
 
 //Delete person
 func DeletePerson(w http.ResponseWriter, r *http.Request) {
-
+	
 }
 
 func main() {
