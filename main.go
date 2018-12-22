@@ -26,9 +26,26 @@ var people []Person
 func GetPeople(w http.ResponseWriter, r *http.Request) {
 	json.NewEncoder(w).Encode(people)
 }
-func GetPerson(w http.ResponseWriter, r *http.Request) {}
-func CreatePerson(w http.ResponseWriter, r *http.Request) {}
-func DeletePerson(w http.ResponseWriter, r *http.Request) {}
+
+// Get single data
+// Loops through the mapped names to check if the incoming id match in the Person struct
+func GetPerson(w http.ResponseWriter, r *http.Request) {
+	params := mux.Vars(r)
+	for _, item := range people {
+	if item.ID == params["id"]
+	}
+}
+
+//Create Person
+//
+func CreatePerson(w http.ResponseWriter, r *http.Request) {
+
+}
+
+//Delete person
+func DeletePerson(w http.ResponseWriter, r *http.Request) {
+
+}
 
 func main() {
 	router := mux.NewRouter()
